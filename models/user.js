@@ -1,4 +1,3 @@
-// const { text: String } = require('body-parser')
 const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({
