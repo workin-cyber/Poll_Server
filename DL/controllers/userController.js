@@ -1,5 +1,3 @@
-// הרצת החיבור לדאטה בייס
-require('../db');
 
 // ייבוא המודל של המשתמשים
 const userModel = require('../models/user');
@@ -43,6 +41,27 @@ const createOne = async (newUser) => {
 const readAll = async () => {
   const result = await userModel.find(); //בקשה מהדאטה בייס לשלוח את כל התוצאות של המשתמשים
   console.log('the users in the db', result); //  הדפסה לקונסול- לצורך בדיקה בלבד
+  return result;
+};
+
+// קריאת משתמשים עפ"י פילטור
+const read = async (filter) => {
+  const result = await userModel.find(filter); //בקשה מהדאטה בייס לשלוח את כל התוצאות של המשתמשים
+  console.log('Result: ', result); //  הדפסה לקונסול- לצורך בדיקה בלבד
+  return result;
+};
+
+// עדכון משתמש מסוים
+const update = async (nUser) => {
+  const result = await userModel.findByIdAndUpdate(nUser._id,nUser); 
+  console.log('result: ', result); 
+  return result;
+};
+
+// מחיקת משתמש
+const deleteOne = async (userId) => {
+  const result = await userModel.findByIdAndDelete(userId);
+  console.log('result:', result);
   return result;
 };
 
